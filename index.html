@@ -19,6 +19,9 @@
 </head>
 
 <body>
+
+
+
     <header style="background-color: #466BB0;">
         <nav class="container navbar-expand-sm navbar-dark">
             <a style="float:left;" class="nav-link active" href="index.html">Francisco Ortiz</a>
@@ -42,39 +45,49 @@
                 <!-- <aside><img id="bio-image" src="static/image/me.jpg" alt="Francisco Ortiz"></aside> -->
                 <div class="form-row">
                     <div class="col-md-2"></div>
-                    <div class="col-md-4"><input type="checkbox" class="form-check-input"
-                            id="upperCaseCharacters">Uppercase
+                    <div class="col-md-4">Password lenght?
                         characters</input></div>
-                    <div class="col-md-6">A, B, C, ...</div>
+                    <div class="col-md-2"><input id="passwordLength" class="form-control" type="number"> </div>
+                </div>
+                <!-- <hr> -->
+                <div class="form-row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4"><input id="includeUppercaseCharacters" type="checkbox"
+                            class="form-check-input" id="upperCaseCharacters">Uppercase
+                        characters</input></div>
+                    <div class="col-md-6">A, B, C, ... Z</div>
                 </div>
                 <div class="form-row">
                     <div class="col-md-2"></div>
                     <div class="col-md-4"><input type="checkbox" class="form-check-input"
-                            id="lowerCaseCharacters">Lowercase
+                            id="includeLowercaseCharacters">Lowercase
                         characters</input></div>
-                    <div class="col-md-6">a, b, c, ...</div>
+                    <div class="col-md-6">a, b, c, ... z</div>
                 </div>
                 <div class="form-row">
                     <div class="col-md-2"></div>
-                    <div class="col-md-4"><input type="checkbox" class="form-check-input" id="numericCharacters">Numeric
+                    <div class="col-md-4"><input id="includeNumericCharacters" type="checkbox"
+                            class="form-check-input">Numeric
                         characters</input></div>
-                    <div class="col-md-6">0, 1, 2, ...</div>
+                    <div class="col-md-6">0, 1, 2, ... 9</div>
                 </div>
                 <div class="form-row">
                     <div class="col-md-2"></div>
-                    <div class="col-md-4"><input type="checkbox" class="form-check-input" id="numericCharacters">Special
+                    <div class="col-md-4"><input id="includeSpecialCharacters" type="checkbox" class="form-check-input"
+                            id="numericCharacters">Special
                         characters</input></div>
-                    <div class="col-md-6">!, @, #, $, %, ^, &, *, (, ), _, + ...</div>
+                    <div class="col-md-6">~, !, @, #, $, %, ^, &, *, (, ), _, +</div>
                 </div>
-                <hr>
+                <br>
+                <!-- <hr> -->
                 <div class="form-row">
-                    <textarea id="output" class="col-md-12" type="textarea" rows="6"></textarea>
+                    <textarea id="output" class="form-control col-md-12" type="textarea" rows="6"></textarea>
                     <!-- <div class="col-md-8">!, @, #, $, %, ^, &, *, (, ), _, + ...</div> -->
                 </div>
             </div>
 
             <div class="card-footer text-center">
-                <button class="btn-lg btn-danger col-md-3">
+                <button class="btn-lg btn-danger col-md-3" onclick="generatePassword()">
                     Generate password
                 </button>
                 <button class="btn-lg btn-warning col-md-3">
@@ -89,12 +102,65 @@
     </footer>
 
     <script>
-        var lowerCaseCharacters = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
-        // var upperCaseCharacters = ["ABCDEFGHIJKLMNOPQRSTUVWXYZ"].split();
-        // var numericCharacters = ["01234567890"].split();
 
-        console.log(lowerCaseCharacters);
+        function generatePassword() {
+
+            // var lowerCaseCharacters = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+            var uArray = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            var uppercaseCharacters = uArray.split("");
+
+            var lArray = "abcdefghijklmnopqrstuvwxyz";
+            var lowercaseCharacters = lArray.split("");
+
+            var nArray = "0123456789";
+            var numericCharacters = nArray.split("");
+
+            var sArray = "~!@#$%^&*()_+";
+            var specialCharacters = sArray.split("");
+
+            var showU = document.getElementById("showUppercaseCharacters");
+
+            var iUpper = document.getElementById("includeUppercaseCharacters").checked;
+            var iLower = document.getElementById("includeLowercaseCharacters").checked;
+            var iNumeric = document.getElementById("includeNumericCharacters").checked;
+            var iSpecial = document.getElementById("includeSpecialCharacters").checked;
+            var passwordLength = document.getElementById("passwordLength").value;
+
+            var resultString = [];
+            var arrayLength;
+
+            num = Math.floor(Math.random() * 3);
+
+            while (resultString.length < passwordLength) {
+                if (iUpper) {
+                    // arrayLength = upperCaseCharacters.length;
+                    resultString.push(uppercaseCharacters[Math.floor(Math.random() * uppercaseCharacters.length)]);
+                    
+                } 
+                if (iLower) {
+                    resultString.push(lowercaseCharacters[Math.floor(Math.random() * lowercaseCharacters.length)]);
+                    
+                } 
+                if (iNumeric) {
+                    resultString.push(numericCharacters[Math.floor(Math.random() * numericCharacters.length)]);
+                    
+                } 
+                if (iSpecial) {
+                    resultString.push(specialCharacters[Math.floor(Math.random() * specialCharacters.length)]);
+                    
+                }
+            }
+
+            output.value = resultString.slice(0,passwordLength).join("");
+            // var numericCharacters = ["01234567890"].split();
+
+            // console.log(lowerCaseCharacters);
+        }
+
+        generatePassword();
     </script>
+
+
 
 </body>
 
