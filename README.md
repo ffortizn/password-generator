@@ -5,8 +5,8 @@ This application generates a random password based on user-selected criteria. It
 
 ## Getting Started
 
-Open web browser
-Navigate to https://ffortizn.github.io/password-generator/
+1. Open web browser
+2. Navigate to https://ffortizn.github.io/password-generator/
 
 ### Prerequisites
 
