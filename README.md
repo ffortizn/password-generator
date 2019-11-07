@@ -5,33 +5,16 @@ This application generates a random password based on user-selected criteria. It
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+Open web browser
+Navigate to https://ffortizn.github.io/password-generator/
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
-
-```
-Give examples
-```
+Web browser: we recommend google chrome
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
+N/A
 
 ## Running
 
@@ -43,6 +26,8 @@ Character type:
 * Numeric characters
 * Lowercase characters
 * Uppercase characters
+
+Once all prompts are answered, the user will be presented with a password matching the answered prompts
 
 ## Built With
 
