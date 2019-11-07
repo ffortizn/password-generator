@@ -1,6 +1,6 @@
 # Password Generator
 
-![GitHub repo size]
+![GitHub repo size](https://img.shields.io/github/repo-size/scottydocs/README-template.md)
 
 Password generator
 
