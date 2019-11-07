@@ -1,6 +1,6 @@
 # Password Generator
 
-![GitHub repo size](https://img.shields.io/github/repo-size/scottydocs/README-template.md)
+![GitHub repo size](https://github.com/ffortizn/password-generator/blob/master/README.md)
 
 Password generator
 
