@@ -18,6 +18,8 @@ N/A
 
 ## Running
 
+![picture](password-generator.png)
+
 The user will be prompted to choose from the following password criteria:
 Length (must be between 8 and 128 characters)
 
