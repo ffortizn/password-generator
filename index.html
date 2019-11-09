@@ -46,9 +46,13 @@
                 <div class="form-row">
                     <div class="col-md-2"></div>
                     <div class="col-md-4">Password lenght?
-                        characters</input></div>
-                    <div class="col-md-2"><input id="passwordLength" class="form-control" type="number"> </div>
+                        characters</div>
+                    <div class="col-md-2"><input id="passwordLength" class="form-control" type="number" min="8"
+                            max="128"> </div>
+                    <div hidden="true" class="col-md-4 form-control text-center bg-danger text-white" id="errorMsg">
+                    </div>
                 </div>
+
                 <!-- <hr> -->
                 <div class="form-row">
                     <div class="col-md-2"></div>
@@ -81,7 +85,8 @@
                 <br>
                 <!-- <hr> -->
                 <div class="form-row">
-                    <textarea id="output" class="form-control col-md-12" type="textarea" rows="6"></textarea>
+                    <textarea id="output" class="form-control col-md-12" type="textarea" rows="3"
+                        style="font-family: 'Courier New', Courier, monospace; font-size: 24pt;"></textarea>
                     <!-- <div class="col-md-8">!, @, #, $, %, ^, &, *, (, ), _, + ...</div> -->
                 </div>
             </div>
@@ -90,7 +95,7 @@
                 <button class="btn-lg btn-danger col-md-3" onclick="generatePassword()">
                     Generate password
                 </button>
-                <button class="btn-lg btn-warning col-md-3">
+                <button class="btn-lg btn-warning col-md-3" onclick="copyToClipboard()">
                     Copy to clipboard
                 </button>
 
@@ -102,6 +107,7 @@
     </footer>
 
     <script>
+
 
         function generatePassword() {
 
@@ -126,41 +132,48 @@
             var iSpecial = document.getElementById("includeSpecialCharacters").checked;
             var passwordLength = document.getElementById("passwordLength").value;
 
+            var somethingChecked = iUpper + iLower + iNumeric + iSpecial;
+
             var resultString = [];
             var arrayLength;
 
-            num = Math.floor(Math.random() * 3);
+            var rNum = 0;
 
-            while (resultString.length < passwordLength) {
-                if (iUpper) {
-                    // arrayLength = upperCaseCharacters.length;
-                    resultString.push(uppercaseCharacters[Math.floor(Math.random() * uppercaseCharacters.length)]);
-                    
-                } 
-                if (iLower) {
-                    resultString.push(lowercaseCharacters[Math.floor(Math.random() * lowercaseCharacters.length)]);
-                    
-                } 
-                if (iNumeric) {
-                    resultString.push(numericCharacters[Math.floor(Math.random() * numericCharacters.length)]);
-                    
-                } 
-                if (iSpecial) {
-                    resultString.push(specialCharacters[Math.floor(Math.random() * specialCharacters.length)]);
-                    
+            if (passwordLength >= 8 && passwordLength <= 128 && (somethingChecked != 0)) {
+                document.getElementById("errorMsg").hidden = true;
+
+                while (resultString.length < passwordLength) {
+                    switch (Math.floor(Math.random() * 4)) {
+                        case 0:
+                            if (iUpper)
+                                resultString.push(uppercaseCharacters[Math.floor(Math.random() * uppercaseCharacters.length)]);
+                            break;
+                        case 1:
+                            if (iLower) resultString.push(lowercaseCharacters[Math.floor(Math.random() * lowercaseCharacters.length)]);
+                            break;
+                        case 2: if (iNumeric) resultString.push(numericCharacters[Math.floor(Math.random() * numericCharacters.length)]);
+                            break;
+                        case 3:
+                            if (iSpecial) resultString.push(specialCharacters[Math.floor(Math.random() * specialCharacters.length)]);
+                            break;
+                    }
                 }
+
+            } else {
+                document.getElementById("errorMsg").hidden = false;
+                document.getElementById("errorMsg").textContent = "Enter a number between 8 and 128.";
             }
 
-            output.value = resultString.slice(0,passwordLength).join("");
-            // var numericCharacters = ["01234567890"].split();
-
-            // console.log(lowerCaseCharacters);
+            output.value = resultString.slice(0, passwordLength).join("");
         }
 
-        generatePassword();
+        function copyToClipboard() {
+            document.getElementById('output').select();
+            document.execCommand('copy');
+            alert("Copied to clipboard!");
+        }
+
     </script>
-
-
 
 </body>
 
