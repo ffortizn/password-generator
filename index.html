@@ -57,35 +57,31 @@
                 <div class="form-row">
                     <div class="col-md-2"></div>
                     <div class="col-md-4"><input id="includeUppercaseCharacters" type="checkbox"
-                            class="form-check-input" id="upperCaseCharacters">Uppercase
-                        characters</input></div>
-                    <div class="col-md-6">A, B, C, ... Z</div>
+                            class="form-check-input">Uppercase characters></div>
+                    <div class="col-md-6">A, B, C, D, E, F, ... Z</div>
                 </div>
                 <div class="form-row">
                     <div class="col-md-2"></div>
                     <div class="col-md-4"><input type="checkbox" class="form-check-input"
-                            id="includeLowercaseCharacters">Lowercase
-                        characters</input></div>
-                    <div class="col-md-6">a, b, c, ... z</div>
+                            id="includeLowercaseCharacters">Lowercase characters</div>
+                    <div class="col-md-6">a, b, c, d, e, f, ... z</div>
                 </div>
                 <div class="form-row">
                     <div class="col-md-2"></div>
                     <div class="col-md-4"><input id="includeNumericCharacters" type="checkbox"
-                            class="form-check-input">Numeric
-                        characters</input></div>
-                    <div class="col-md-6">0, 1, 2, ... 9</div>
+                            class="form-check-input">Numeric characters</div>
+                    <div class="col-md-6">0, 1, 2, 3, 4, 5, 6, 7, 8, 9</div>
                 </div>
                 <div class="form-row">
                     <div class="col-md-2"></div>
-                    <div class="col-md-4"><input id="includeSpecialCharacters" type="checkbox" class="form-check-input"
-                            id="numericCharacters">Special
-                        characters</input></div>
+                    <div class="col-md-4"><input id="includeSpecialCharacters" type="checkbox"
+                            class="form-check-input">Special characters</div>
                     <div class="col-md-6">~, !, @, #, $, %, ^, &, *, (, ), _, +</div>
                 </div>
                 <br>
                 <!-- <hr> -->
                 <div class="form-row">
-                    <textarea id="output" class="form-control col-md-12" type="textarea" rows="3"
+                    <textarea id="output" class="form-control col-md-12" rows="3"
                         style="font-family: 'Courier New', Courier, monospace; font-size: 24pt;"></textarea>
                     <!-- <div class="col-md-8">!, @, #, $, %, ^, &, *, (, ), _, + ...</div> -->
                 </div>
@@ -160,7 +156,7 @@
                 }
 
             } else {
-                document.getElementById("errorMsg").hidden = false;
+                document.getElementById("errorMsg").hidden = "";
                 document.getElementById("errorMsg").textContent = "Enter a number between 8 and 128.";
             }
 
